@@ -1,0 +1,82 @@
+<div class="blog_webi container">
+        <div class="borbutt">
+            <h1 class="heading text-center"><span>{{ heading_title }}</span></h1>
+        </div>
+        <div class="box-content">
+            <div class="box-product row rless">
+                <div id="blog" class="owl-carousel owl-theme">
+                {% for blog in blogs %}
+                    <div class="product-block col-xs-12 cless">
+                       <div class="blogshadow">
+                        {% if blog.image %}
+                            <div class="blog-left">
+                                <div class="webi-blog-image">
+                                    <img src="{{ blog.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-responsive" />
+                                    <div class="blog-post-image-hover"> </div>
+                                    <div class="webi_post_hover">
+                                        <div class="blog-ic">
+                                        <a class="icon zoom" title="Click to view Full Image " href="{{ blog.image }}" data-lightbox="example-set"><i class="fa fa-search"></i></a>
+                                        <a class="icon readmore_link" title="all blog" href="{{ all_blogs }}"><i class="fa fa-link"></i></a>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="date-time">
+                                    <div class="blogdt">{{ blog.date_added }}</div>
+                                </div>
+                                
+                            </div>
+                        {% endif %}
+                        <div class="blog-right text-left">
+                            <div class="bs">
+                                <!-- <h5><i class="fa fa-comments-o"></i> {{ blog.total_comments }} {{ entry_comment }}</h5> -->
+                                
+                                <h5><i class="fa fa-comments"></i> {{ blog.total_comments }} {{ entry_comment }}</h5>
+                                <h4><a href="{{ blog.href }}">{{ blog.title }}</a></h4>
+                                <p>{{ blog.description }}</p>
+                                <!-- <div class="testimg">
+                                    <img class="img-responsive timg" src="image/catalog/testimonial/1.png">By<span> demo</span>
+                                </div> -->
+                                
+
+                                <!-- <p>{{ blog.description }}</p>
+                                <a class="read_more" href="{{ blog.href }}">{{ text_read_more }}</a>
+                                 <h5>{{ blog.total_comments }} {{ entry_comment }}</h5>
+                                    <div class="view-blog">
+                                        <div class="read-more">
+                                            <a href="{{ blog.href }}">
+                                                <i class="fa fa-link"></i>{{ text_read_more }}
+                                            </a>
+                                        </div>
+                                    </div> -->
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!--  <div class="buttons-see-all text-center">
+            <button type="button" onclick="location='{{ all_blogs }}';" class="btn btn-primary">{{ button_all_blogs }}</button>
+        </div> -->
+    </div>
+
+
+<script type="text/javascript">
+    (function($){
+    $("#blog").owlCarousel({
+    itemsCustom : [
+    [0, 1],
+    [600, 2],
+    [768, 2],
+    [992, 2],
+    [1200, 3],
+    [1410, 3]
+    ],
+      // autoPlay: 1000,
+      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
+      navigation: true,
+      pagination:false
+    });
+  }(jQuery));
+</script>

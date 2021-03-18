@@ -1,0 +1,130 @@
+<!-- <div class="onsl"> -->
+<div class="container onsl-onsl">
+<div class="row">
+  
+  <div class="col-lg-12 col-md-12 col-xs-12 rtlleft">
+  <h1 class="heading text-center"><span>{{ onsale_title }}</span></h1>
+  <div class="row rless">
+    {% set temp = 0 %}
+{% set setCol = 2 %}
+  <div id="onsale" class="owl-theme owl-carousel">
+ {% for product in products %}
+
+ {% set temp = temp + 1 %}
+        {% if temp % setCol == 1 %}
+            <div class="multi-row">
+        {% endif %}
+  <div class="product-layout col-xs-12 cless">
+    <div class="product-thumb transition">
+      <div class="image col-xs-5"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive center-block" /></a>
+          <!-- pixeltemplate Images Start -->
+                 {% set t = 0 %}
+                  {% for more_image in product.more_images %}
+                  {% for pop in more_image %}
+                  {% if t == 0 %}
+                    <a href="{{ product.href }}"><img src="{{ pop.popup_more }}" class="img-responsive second-img" alt="hover image"/></a>
+                  {% set t = t + 1 %}
+                    {% endif %}
+
+                  {% endfor %}
+                  {% endfor %}
+          <!-- End -->
+
+        {% if product.is_new %}<span class="new">{{ pro_new }}</span>{% endif %}
+
+          <!-- {% if product.tag_per  %}
+        <span class="sale">{{ product.tag_per }}%</span>
+        {% endif %} -->
+
+        <!-- {% if product.price %}
+          {% if product.special %}
+            <span class="reduce-price">{{ pro_sale }}</span>
+          {% endif %}
+        {% endif %} -->
+
+      </div>
+
+     <div class="caption col-xs-7 text-left">
+
+        {% if product.rating %}
+          <div class="rating">
+            {% for i in 1..5 %}
+            {% if product.rating < i %}
+            <span class="fa fa-stack">
+              <i class="fa fa-star-o fa-stack-2x"></i>
+            </span>
+            {% else %}
+            <span class="fa fa-stack">
+              <i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i>
+            </span>
+            {% endif %}
+            {% endfor %}
+          </div>{% else %}
+          <div class="rating">{% for i in 1..5 %}
+          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+          {% endfor %}</div>
+        {% endif %}
+
+        <h4 class="protitle"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+
+         {% if product.price %}
+        <div class="price">
+          {% if not product.special %}
+          {{ product.price }}
+          {% else %}
+          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+          {% endif %}
+         {#  {% if product.tax %}
+          <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+          {% endif %} #}
+        </div>
+        {% endif %}
+
+        <div class="button-group">
+          <button type="button" data-toggle="tooltip" title="{{ button_cart }}" onclick="cart.add('{{ product.product_id }}');"><span>{{ button_cart }}</span></button>
+          <!-- <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><svg><use xlink:href="#heart" /></svg></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><svg><use xlink:href="#compare"/></svg></button>
+          <div data-toggle="tooltip" title="Quickview"  class="bquickv"></div> -->
+        </div>
+       
+
+      </div>
+
+    </div>
+  </div>
+
+ {% if temp % setCol == 0 %}
+            </div>
+        {% endif %}
+    {% endfor %}
+     {% if products|length % setCol != 0 %}
+
+        </div>
+        {% endif %}
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<!-- </div> -->
+<script type="text/javascript">
+    (function($){
+    $("#onsale").owlCarousel({
+    itemsCustom : [
+    [0, 1],
+    [320, 1],
+    [600, 2],
+    [768, 2],
+    [992, 3],
+    [1200, 3],
+    [1410, 4]
+    ],
+      // autoPlay: 6000,
+      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
+      navigation : true,
+      pagination:false
+    });
+   }(jQuery));
+</script>

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+  {% if heading_title %}
+  <h2>{{ heading_title }}</h2>
+  {% endif %}
+  {{ html }}
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    $("#testi").owlCarousel({
+    itemsCustom : [
+    [0, 1],
+    [600, 2],
+    [768, 2],
+    [992, 2],
+    [1200, 3],
+    [1410, 3]
+    ],
+      autoPlay: 1000000,
+      animateIn: 'fadeIn',
+      animateOut: 'fadeOut',
+      loop: false,
+      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
+      navigation : true,
+      pagination:false
+    });
+    });
+</script>

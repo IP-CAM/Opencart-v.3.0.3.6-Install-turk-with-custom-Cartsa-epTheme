@@ -1,0 +1,122 @@
+{{ header }}
+<div class="breadbg">
+  <div class="container">
+    <div class="row">
+      <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+<div class="container">
+  
+    <div class="row">
+        {{ column_left }}
+        {% if column_left and column_right %}
+            {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+            {% set class = 'col-sm-8 col-lg-9 col-md-9 col-xs-12' %}
+        {% else %}
+            {% set class = 'col-sm-12' %}
+        {% endif %}
+
+        <div id="content" class="{{ class }} webi-single-blog acpage">
+            {{ content_top }} 
+            <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 blogsticky">
+                
+                {% if blogs.image %}
+                    <div class="webi-blog-image">
+                        <img src="{{ blogs.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-responsive" />
+                    </div>
+                {% endif %}
+                <div class="sngblog">
+                <h3>{{ heading_title }}</h3>
+                <div class="blog-desc"> {{ description }} </div>
+            </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6 col-xs-12 blogal">
+              
+                {% if success %}
+                    <div class="alert alert-success">
+                        <i class="fa fa-check-circle"></i> {{ success }}
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    </div>
+                {% endif %}
+
+                {% if blog_comments %}
+                    <h3 class="blog-comment">{{ text_your_comments }}</h3>
+                    <div class="bcomment">
+                    {% for blog_comment in blog_comments %}
+                        <div class="view-comment">
+                            <div class="blogu"><i class="fa fa-user"></i><span>{{ blog_comment.author }}</span></div>
+                            <div class="date"><i class="fa fa-calendar"></i><span>{{ blog_comment.date_added }}</span></div>
+                            <div class="comm"><i class="fa fa-comments-o pull-left"></i><div class="wco">{{ blog_comment.comment }}</div></div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+
+                {% if allow_comments %}
+                    <div class="block-title">
+                        <h3>
+                           {{ button_comment_add }}
+                        </h3>
+                    </div>
+                    <div class="" id="add-comment-blog" style="margin-bottom: 10px;">
+                        {% if (login_required and not is_logged) %}
+                            <h4 class="text-left">{{ text_login_required }}</h4>
+                        {% else %}
+                            <form action="{{ action }}" method="post" enctype="multipart/form-data" class="">
+                                <div class="form-group required" style="margin-top: 10px;">
+                                    <div>
+                                        <input type="text" name="author" value="{{ author }}" id="input-author" placeholder="{{ entry_author }}" class="form-control" />
+                                        {% if error_author %}
+                                            <div class="text-danger">{{ error_author }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group required" style="margin-top: 10px;">
+                                    <div>
+                                        <input type="text" name="email" value="{{ email }}" id="input-email" placeholder="{{ entry_email }}" class="form-control" />
+                                        {% if error_email %}
+                                            <div class="text-danger">{{ error_email }}</div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <div>
+                                        <textarea name="comment" rows="10" id="input-comment" class="form-control"  value="{{ entry_comment }}" placeholder="{{ entry_comment }}"/></textarea>
+                                        {% if error_comment %}
+                                            <div class="text-danger">
+                                                {{ error_comment }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                {{ captcha }}
+                                <input type="hidden" name="auto_approve" value="{{ auto_approve }}" />
+                                <div class="buttons text-left">
+                                    <input class="btn btn-primary" type="submit" value="{{ button_submit }}" data-toggle="tooltip" title="{{ button_submit }}" />
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                        {#
+                            <div class="buttons text-right">
+                                <button type="button" onclick="$('#add-comment').slideToggle();" class="btn btn-primary">
+                                    {{ button_comment_add }}
+                                </button>
+                            </div>
+                        #}
+                {% endif %}
+            </div></div>
+            
+        </div>
+        {{ column_right }}
+    </div>
+</div>
+{{ content_bottom }}
+{{ footer }}

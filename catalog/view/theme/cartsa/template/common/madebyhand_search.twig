@@ -1,0 +1,46 @@
+{% if total_product > 0 %}
+	{% for product in products %}
+<div class="madebyhand-cat col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
+	<div class="searchbr">
+    <div class="product-info col-lg-3 col-sm-4 col-xs-4 image">
+    	<a href="{{ product.href }}">
+    		<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+    	</a>
+   	</div>
+   	<div class="madebyhand-dis col-lg-9 col-sm-8 col-xs-8">
+   		<h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+   		<p class="list-des">{{ product.description }}</p>
+   		{% if product.rating %}
+                          <div class="rating">
+                            {% for i in 1..5 %}
+                            {% if product.rating < i %}
+                            <span class="fa fa-stack">
+                              <i class="fa fa-star-o fa-stack-2x"></i>
+                            </span>
+                            {% else %}
+                            <span class="fa fa-stack">
+                              <i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i>
+                            </span>
+                            {% endif %}
+                            {% endfor %}
+                          </div>{% else %}
+                          <div class="rating">{% for i in 1..5 %}
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                          {% endfor %}</div>
+                        {% endif %}
+		    {% if product.price %}
+		        <div class="price">
+		          {% if not product.special %}
+		          {{ product.price }}
+		          {% else %}
+		          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+		          {% endif %}
+		        </div>
+		    {% endif %}
+	</div>
+</div>
+</div>
+{% endfor %}
+{% else %}
+	<div><p>There is no product that matches the search criteria.</p></div>
+{% endif %}

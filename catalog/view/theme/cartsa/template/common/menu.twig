@@ -1,0 +1,95 @@
+{% if categories %}
+    
+  <div class="menurel">
+  <nav id="menu" class="navbar">
+    <div class="navbar-header">
+      <button type="button" class="btn btn-navbar navbar-toggle" onclick="openNav()" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+    </div>
+
+           <div id="pt_vegamenu" class="title-menu wr-left-menu hidden-xs">
+            <div id="wr-menu-icon">
+                  <div class="wr-menu" data-toggle="collapse" data-target="#under-menu">
+                      <button class="btn-navbar navbar-toggle" type="button" data-toggle="collapse">
+                        <div class="ico-menu">
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                          <div class="bar"></div>
+                        </div>
+                      </button>
+                      <span class="cate">All Categories</span>
+                      <i class="fa fa-angle-down"></i>
+                  </div>
+              </div>
+            </div>
+
+
+    <div id="mySidenav" class="sidenav">
+      <div id="under-menu" class="collapse">
+      <div class="close-nav hidden-sm hidden-md hidden-lg hidden-xl">
+                <span class="categories">Category</span>
+                <a href="javascript:void(0)" class="closebtn pull-right" onclick="closeNav()"><i class="fa fa-close"></i></a>
+            </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        {% for category in categories %}
+        {% if category.children %}
+        <li class="dropdown moremenu"><a href="{{ category.href }}" class="dropdown-toggle header-menu" data-toggle="dropdown">
+           <div class="thumb_img pull-left">
+            <img src="{{ category.thumb_menu }}" alt="{{ category.name }}">
+          </div> 
+          {{ category.name }}
+          <i class="fa fa-angle-down pull-right enangle"></i></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+              <ul class="list-unstyled">
+                {% for child in children %}
+                <!--3rd level-->
+                    <li class="dropdown-submenu"> <a href="{{ child.href }}" class="submenu-title"> {{ child.name }} </a>
+                      {% if child.grand_childs %}
+                      <ul class="list-unstyled grand-child">
+                        {% for grand_child in child.grand_childs %}
+                        <li> <a href="{{ grand_child.href }}"> {{grand_child.name}} </a> </li>
+                        {% endfor %}
+                      </ul>
+                      {% endif %}
+                    </li>
+                    <!--3rd level over-->
+                {% endfor %}
+              </ul>
+              {% endfor %}
+              <a href="{{ category.href }}" class="see-all visible-xs">{{ text_all }} {{ category.name }}</a> 
+            </div>
+            </div>
+        </li>
+        {% else %}
+        <li class="moremenu"><a href="{{ category.href }}" class="bmenu">
+           <div class="thumb_img pull-left">
+            <img src="{{ category.thumb_menu }}" alt="{{ category.name }}">
+          </div> {{ category.name }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    </div>
+  </div>
+  
+  </nav>
+</div>
+{% endif %} 
+
+
+<script type="text/javascript">
+ function headermenu() {
+     if (jQuery(window).width() < 768)
+     {
+         jQuery('ul.nav li.dropdown a.header-menu').attr("data-toggle","dropdown");        
+     }
+     else
+     {
+         jQuery('ul.nav li.dropdown a.header-menu').attr("data-toggle",""); 
+     }
+}
+$(document).ready(function(){headermenu();});
+jQuery(window).resize(function() {headermenu();});
+jQuery(window).scroll(function() {headermenu();});
+</script>

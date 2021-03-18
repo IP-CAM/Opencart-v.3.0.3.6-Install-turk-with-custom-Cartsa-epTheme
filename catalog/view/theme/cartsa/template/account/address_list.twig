@@ -1,0 +1,55 @@
+{{ header }}
+<div class="breadbg">
+  <div class="container">
+    <div class="row">
+      <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+<div id="account-address" class="container acpage">
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+  {% endif %}
+  {% if error_warning %}
+  <div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  {% endif %}
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-lg-8 col-sm-5 col-md-6 col-xs-12' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-8 col-md-9 col-xs-12 colright' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+<div class="infobg">
+    <div class="borbutt">
+      <h1 class="text-center">{{ text_address_book }}</h1>
+    </div>
+      {% if addresses %}
+      <div class="row">
+          {% for result in addresses %}
+         <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="addlist">
+            <div>{{ result.address }}</div>
+           <div class="addl"><a href="{{ result.update }}" class="btn btn-info">{{ button_edit }}</a> &nbsp; <a href="{{ result.delete }}" class="btn btn-danger">{{ button_delete }}</a></div>
+        </div></div>
+          {% endfor %}
+
+      </div>
+      {% else %}
+      <p>{{ ctext_empty }}</p>
+      {% endif %}
+      <div class="buttons clearfix">
+        <div class="pull-left"><a href="{{ back }}" class="btn btn-primary">{{ button_back }}</a></div>
+        <div class="pull-right"><a href="{{ add }}" class="btn btn-primary">{{ button_new_address }}</a></div>
+      </div>
+      </div></div>
+    {{ column_right }}</div>
+</div>
+{{ content_bottom }}
+{{ footer }}

@@ -1,0 +1,130 @@
+<div class="container">
+<div class="timerpro martb">
+  <div class="borbutt">
+    <h1 class="heading text-center"><span>{{ oc_title }}</span></h1>
+  </div>
+<div class="row rless"> 
+<div class="rtlleft">
+  <div id="count" class="owl-theme owl-carousel">
+  {% for product in products %}
+  <div class="product-layout col-xs-12 cless">
+    <div class="product-thumb transition">
+
+      <div class="image">
+        <a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive center-block" /></a>
+
+         {% if product.is_new %}<span class="new">{{ pro_new }}</span>{% endif %}
+
+          {% if product.tag_per  %}
+        <span class="sale">{{ product.tag_per }}%</span>
+        {% endif %}
+
+        {% if product.price %}
+          {% if product.special %}
+               <!-- <span class="reduce-price">{{ pro_sale }}</span> -->
+          {% endif %}
+      {% endif %}
+
+      </div>
+     
+      <div class="caption text-left">
+        {% if product.rating %}
+          <div class="rating">
+            {% for i in 1..5 %}
+            {% if product.rating < i %}
+            <span class="fa fa-stack">
+              <i class="fa fa-star-o fa-stack-2x"></i>
+            </span>
+            {% else %}
+            <span class="fa fa-stack">
+              <i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i>
+            </span>
+            {% endif %}
+          {% endfor %}</div>{% else %}
+          <div class="rating">{% for i in 1..5 %}
+          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+          {% endfor %}</div>
+        {% endif %}
+
+        <h4 class="protitle"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+
+        {% if product.price %}
+        <div class="price">
+          {% if not product.special %}
+          {{ product.price }}
+          {% else %}
+          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+          {% endif %}
+         {#  {% if product.tax %}
+          <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+          {% endif %} #}
+        </div>
+        {% endif %}
+
+        <!-- <p class="countdes">{{ product.description }}</p> -->
+
+        <!-- <hr> -->
+
+        <p class="dealt">{{ text_deal }}</p>
+         {% if config_module.countdown %}<div id="Countdown{{ product.product_id }}" class="box-timer"></div> {% endif %}
+
+         <!-- <div id="Countdown28" class="box-timer is-countdown"><span class="countdown-row countdown-show4"><span class="countdown-section"><span class="countdown-amount">412</span><span class="countdown-period">Days</span></span><span class="countdown-section"><span class="countdown-amount">9</span><span class="countdown-period">Hrs</span></span><span class="countdown-section"><span class="countdown-amount">10</span><span class="countdown-period">Mins</span></span><span class="countdown-section"><span class="countdown-amount">17</span><span class="countdown-period">Secs</span></span></span></div> -->
+
+        <!-- <div class="button-group">
+          <button type="button"  onclick="cart.add('{{ product.product_id }}');" class="cartb"><span>{{ button_cart }}</span></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><svg><use xlink:href="#heart" /></svg></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><svg><use xlink:href="#compare"/></svg></button>
+          <div data-toggle="tooltip" title="Quickview"  class="bquickv"></div>
+        
+      </div> -->
+
+      </div>
+
+       
+    
+
+   {% if product.date_end %}
+            <script type="text/javascript">
+                (function($){
+                    $('#Countdown{{ product.product_id }}').countdown({
+                        until: new Date({{ product.date_end|date("Y") }}, {{ product.date_end|date("m") }}-1, {{ product.date_end|date("d") }}, {{ product.date_end|date("H") }}, {{ product.date_end|date("i") }}, {{ product.date_end|date("s") }}),
+                        labels: ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'],
+                        labels1: ['Year', 'Month', 'Week', 'Day', 'Hr', 'Min', 'Sec'],
+                    });
+                    //$('#Countdown<?php echo $product['product_id'];?>').countdown('pause');
+               }(jQuery));
+            </script>
+            {% endif %}
+            </div>
+    </div>
+  {% endfor %}
+
+
+  
+   </div>
+ </div>
+ </div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+   (function($){
+    $("#count").owlCarousel({
+    itemsCustom : [
+    [0, 1],
+    [320, 1],
+    [400, 1],
+    [600, 2],
+    [768, 2],
+    [992, 3],
+    [1200, 3],
+    [1410, 4]
+    ],
+      // autoPlay: 1000,
+      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
+      navigation : true,
+      pagination:false
+    });
+    }(jQuery));
+</script>

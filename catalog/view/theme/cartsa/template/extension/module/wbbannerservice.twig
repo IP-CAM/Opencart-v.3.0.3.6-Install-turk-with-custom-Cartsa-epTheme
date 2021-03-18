@@ -1,0 +1,23 @@
+<div class="">
+<div class="row bannerser">
+    {% for banner in banners %}
+    <div class="">
+    	<div class="beffect">
+	        {% if banner.link %}
+			    <a href="{{ banner.link }}">
+			    <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />
+			    </a>
+			    {% else %}
+			    <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />
+		    {% endif %}
+		</div>
+	</div>
+	<!-- <div class="col-sm-6 col-xs-6">
+		<div class="imgbnrtext">
+			{{ banner.description }}
+			<a href="{{ banner.link }}" class="btn btn-primary">{{ read_more }}</a>
+		</div>
+	</div> -->
+    {% endfor %}
+</div>
+</div>

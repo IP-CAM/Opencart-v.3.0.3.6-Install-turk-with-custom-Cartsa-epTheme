@@ -1,0 +1,84 @@
+{{ header }}
+<div class="breadbg">
+  <div class="container">
+    <div class="row">
+      <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+<div class="container">
+   
+    <div class="row">
+        {{ column_left }}
+        {% if column_left and column_right %}
+            {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+            {% set class = 'col-sm-8 col-lg-9 col-md-9 col-xs-12' %}
+        {% else %}
+            {% set class = 'col-sm-12' %}
+        {% endif %}
+        <div id="content" class="{{ class }}">
+            {{ content_top }}
+     
+        <!-- <h4 class="headingpage">
+            {{ text_blogs }}
+        </h4> -->
+        {% if blogs %}
+            {% for blog in blogs %}
+                <div class="panel-default webi_blog_page">
+                    {# <h4>{% blog.name %}</h4> #}
+                    {% if blog.blog_data %}
+                        {% for topic in blog.blog_data %}
+                            <div class="allmb">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-5 col-sm-6 col-xs-12">
+                                        {% if topic.image %}
+                                            <div class="webi-blog-image">
+                                                <div class="blog-post-image-hover"> </div>
+                                                <img src="{{ topic.image }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-responsive" />
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-6 col-lg-7 col-sm-6 col-xs-12 allcomment">
+                                        <h5>
+                                            <a href="{{ topic.href }}">{{ topic.title }}</a>
+                                        </h5>
+                                        <div class="blog_links">
+                                                <span class="blog-date">
+                                                    {{ topic.date_added }}
+                                                </span>
+                                                <span class="blog_comment">
+                                                   {{ topic.total_comments }} {{ entry_comment }}
+                                                </span>
+                                                <span class="wcomm">
+                                                    <a href="{{ topic.href }}">
+                                                        {{ text_comment }}
+                                                    </a>
+                                                </span>
+                                        </div>
+
+                                        <div class="blog-desc">{{ topic.description }}</div>
+                                        <div class="read-more"> <a href="{{ topic.href }}" class="btn btn-primary">{{ text_read_more }}</a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="panel-body text-center">{{ text_no_blogs }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% else %}
+                <div class="panel-body text-center">{{ text_no_blogs }}</div>
+            {% endif %}
+            
+        </div>
+        {{ column_right }}
+    </div>
+</div>
+{{ content_bottom }}
+{{ footer }}

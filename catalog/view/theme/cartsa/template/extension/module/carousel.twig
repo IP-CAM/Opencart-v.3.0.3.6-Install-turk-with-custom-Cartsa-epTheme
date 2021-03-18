@@ -1,0 +1,31 @@
+<div class="container martb">
+  <div class="rless logo-slider">
+  <div id="carousel{{ module }}" class="owl-carousel owl-theme">
+    {% for banner in banners %}
+      <div class="text-center col-xs-12 cless">{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />{% endif %}</div>
+    {% endfor %}
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    (function($){
+    $("#carousel{{ module }}").owlCarousel({
+    itemsCustom : [
+    [0, 2],
+    [320, 2],
+    [450, 3],
+    [600, 4],
+    [700, 5],
+    [768, 5],
+    [992, 5],
+    [1200, 6],
+    [1410, 8]
+    ],
+      autoPlay: 6000,
+      loop: true,
+      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
+      navigation : false,
+      pagination:false
+    });
+  }(jQuery));
+</script>

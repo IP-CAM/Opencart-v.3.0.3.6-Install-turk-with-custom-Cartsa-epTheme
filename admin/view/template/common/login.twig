@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+		<title>Mupity
+			{{text_login}}</title>
+		<link rel="stylesheet" type="text/css" href="view/login-page/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="view/login-page/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="view/javascript/animate/animate.css">
+		<link rel="stylesheet" type="text/css" href="view/javascript/css-hamburgers/hamburgers.min.css">
+		<link rel="stylesheet" type="text/css" href="view/javascript/select2/select2.min.css">
+		<link rel="stylesheet" type="text/css" href="view/login-page/css/util.css">
+		<link rel="stylesheet" type="text/css" href="view/login-page/css/main.css">
+	</head>
+	<body>
+
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					<div class="login100-pic js-tilt" data-tilt>
+						<img src="view/login-page/images/img-01.png" alt="IMG">
+					</div>
+
+					<form class="login100-form validate-form" action="{{ action }}" method="post" enctype="multipart/form-data">
+						<span class="login100-form-title">
+							{{ text_login }}
+						</span>
+						{% if success %}
+							<div class="alert alert-success alert-dismissible">
+								<i class="fa fa-check-circle"></i>
+								{{ success }}
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+							</div>
+						{% endif %}
+						{% if error_warning %}
+							<div class="alert alert-danger alert-dismissible">
+								<i class="fa fa-exclamation-circle"></i>
+								{{ error_warning }}
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+							</div>
+						{% endif %}
+
+						<div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+							<input class="input100" type="text" name="username" value="{{ username }}" placeholder="{{ entry_username }}" id="input-username">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate="Password is required">
+							<input class="input100" type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password">
+							<span class="focus-input100"></span>
+							<span class="symbol-input100">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+							</span>
+						</div>
+
+						<div class="container-login100-form-btn">
+							<button class="login100-form-btn">
+								{{ button_login }}
+							</button>
+						</div>
+
+						{% if forgotten %}
+							<div class="text-center p-t-12">
+								<a class="txt2" href="{{ forgotten }}">
+									{{ text_forgotten }}
+								</a>
+							</div>
+						{% endif %}
+						{% if redirect %}
+							<input type="hidden" name="redirect" value="{{ redirect }}"/>
+						{% endif %}
+
+						<div class="text-center p-t-136 text-muted" style="font-size: smaller;">
+							{{footer}}
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script src="view/javascript/jquery3/jquery-3.2.1.min.js"></script>
+		<script src="view/login-page/bootstrap/js/popper.js"></script>
+		<script src="view/login-page/bootstrap/js/bootstrap.min.js"></script>
+		<script src="view/javascript/select2/select2.min.js"></script>
+		<script src="view/javascript/tilt/tilt.jquery.min.js"></script>
+		<script>
+			$('.js-tilt').tilt({scale: 1.1})
+		</script>
+		<script src="view/login-page/js/main.js"></script>
+	</body>
+</html>

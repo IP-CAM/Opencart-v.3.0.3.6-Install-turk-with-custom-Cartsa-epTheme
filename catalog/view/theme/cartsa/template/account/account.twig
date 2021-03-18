@@ -1,0 +1,100 @@
+{{ header }}
+<div class="breadbg">
+  <div class="container">
+    <div class="row">
+      <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
+<div id="account-account" class="container acpage">
+  {% if success %}
+  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}<button type="button" class="close" data-dismiss="alert">&times;</button></div>
+  {% endif %}
+  <div class="row bgcolor">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-8 col-md-6  col-xs-12 colright accw' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-8 col-md-9 col-lg-9  col-xs-12 colright' %}
+    {% else %}
+    {% set class = 'col-xs-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      <div class="acco">
+
+        {{ content_top }}
+      <h2 class="achead">{{ text_my_account }}</h2>
+      <div class="row accrow">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ edit }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acpoder"></use> </svg></span><span>{{ text_edit }}<br><span>edit your account</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ password }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acppass"></use> </svg></span><span>{{ text_password }}<br><span>Change Your Passowrd</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ address }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acppadd"></use> </svg></span><span>{{ text_address }}<br><span>Edit your address</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ newsletter }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acnewsl"></use> </svg></span><span>{{ text_newsletter }}<br><span>subscribe for newsletter</span></span>
+          </a>
+        </div>
+        {# <li><a href="{{ wishlist }}">{{ text_wishlist1 }}</a></li> #}
+      </div>
+      {% if credit_cards %}
+      <h2 class="achead">{{ text_credit_card }}</h2>
+      <ul class="list-unstyled accolor">
+        {% for credit_card in credit_cards %}
+        <li><a href="{{ credit_card.href }}">{{ credit_card.name }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <h2 class="achead">{{ text_my_orders }}</h2>
+      <div class="row accrow">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ order }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acporderh"></use> </svg></span><span>{{ text_order }}<br><span>See your order history</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ download }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acpdown"></use> </svg></span><span>{{ text_download }}<br><span>Download Your Theme</span></span>
+          </a>
+        </div>
+        {% if reward %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ reward }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acpreward"></use> </svg></span><span>{{ text_reward }}<br><span>Count Reward Point</span></span>
+          </a>
+        </div>
+        {% endif %}
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ return }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acpreturn"></use> </svg></span><span>{{ text_return }}<br><span>See your Return</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ transaction }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acptran"></use> </svg></span><span>{{ text_transaction }}<br><span>See your Transaction</span></span>
+          </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <a href="{{ recurring }}">
+            <span><svg class="" width="52px" height="52px"> <use xlink:href="#acppay"></use> </svg></span><span>{{ text_recurring }}<br><span>See your Payment</span></span>
+          </a>
+        </div>
+      </div>
+      
+      {{ content_bottom }}</div></div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

@@ -1,0 +1,48 @@
+<li id="search" class="desktop-search d-inline-block">
+
+<div id="search" class="wbSearch">
+<div id="search_block_top">
+	<select id="madebyhand-search-category">
+      <option value="0">{{ text_category }}</option>
+      {% for category_1 in categories %}
+        {% if category_1.category_id == category_id %}
+          <option value="{{ category_1.category_id }}" selected="selected">{{ category_1.name }}</option>
+        {% else %}
+          <option value="{{ category_1.category_id }}">{{ category_1.name }}</option>
+        {% endif %}
+        {% for category_2 in category_1.children %}
+          {% if category_2.category_id == category_id %}
+            <option value="{{ category_2.category_id }}" selected="selected">&nbsp;&nbsp;&nbsp;&nbsp;{{ category_2.name }}</option>
+          {% else %}
+            <option value="{{ category_2.category_id }}">&nbsp;&nbsp;&nbsp;&nbsp;{{ category_2.name }}</option>
+          {% endif %}
+          {% for category_3 in category_2.children %}
+            {% if category_3.category_id == category_id %}
+              <option value="{{ category_3.category_id }}" selected="selected">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_3.name }}
+              </option>
+            {% else %}
+              <option value="{{ category_3.category_id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ category_3.name }}</option>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endfor %}
+    </select>
+<div class="input-group">
+	<input type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" class="search_query form-control input-lg madebyhand-search" />
+    <div class="input-group-btn">
+    	<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-search hidden-lg hidden-md hidden-sm hidden-xs"></i><!-- <span class="hidden-xs">{{ text_search }}</span> -->
+        <svg><use xlink:href="#hsearch"></use></svg> 
+      </button>
+  		<!-- <a href="javascript:void(0)" class="closebtn close-nav" onclick="closeSearch()"><i class="fa fa-close"></i></a> -->
+  	</div>
+  <!-- madebyhand Search Start  -->
+        <div class="madebyhand-search text-left">
+          <div class="madebyhand-search-loader" style="display: none;"><div class="loaders"></div></div><!-- Add Loader -->
+          <div class="madebyhand-search-result"><!-- search results --></div>
+        </div>
+        <!-- madebyhand Search End  -->
+</div>
+</div>
+</div>
+</li>
