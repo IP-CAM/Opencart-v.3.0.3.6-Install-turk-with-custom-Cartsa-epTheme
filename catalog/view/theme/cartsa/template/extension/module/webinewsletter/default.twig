@@ -1,15 +1,12 @@
 <div class="newsl webi-newsletter {{ prefix }}" id="newsletter_{{ id }}" data-mode="{{ mode }}">
-		
-
+	
 		<form id="formNewLestter" method="post" action="{{ action }}" class="formNewLestter" {% if banner is not empty%} style="background-image: url('{{ banner }}')" {% endif %}>
 			<div class="inner">
 				
-				
-
 				<div id="newsletter" class="col-lg-9 col-md-8 col-xs-12 col-sm-6 text-left">
 					<h2>{{ entry_sign_up_for_newsletter }}</h2>
 					<div class="input-group">
-					<input type="text" class="form-control input-md inputNew" {% if customer_email is not defined %} onblur="javascript:if(this.value=='')this.value='{{ default_input_text }}';" onfocus="javascript:if(this.value=='{{ default_input_text }}')this.value='';"{% endif %} value="{{ customer_email? customer_email : default_input_text }}" size="18" name="email" placeholder="Your email address">
+					<input type="text" class="form-control input-md inputNew" {% if customer_email is not defined %} onblur="javascript:if(this.value=='')this.value='{{ default_input_text }}';" onfocus="javascript:if(this.value=='{{ default_input_text }}')this.value='';"{% endif %} value="{{ customer_email? customer_email : default_input_text }}" size="18" name="email" placeholder="{{default_input_text}}">
 				
 					<div class="input-group-btn"><button type="submit" name="submitNewsletter" class="newsbtn btn btn-primary">{{ button_subscribe }}</button></div>
 					</div>
@@ -31,7 +28,6 @@
 					    <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
 					</ul>
 				</div>
-
 		</div>
 		</form>
 </div>
