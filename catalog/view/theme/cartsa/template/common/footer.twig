@@ -108,28 +108,25 @@
 	</div>
 
 
-	{%if fbottom_full%}
-		<div class="container hidden-xs">
-			<div class="row footblink text-center">
-				{{ fbottom_full }}
+	{% if fbottom_full %}
+		<div class="row footblink text-center">
+			{{ fbottom_full }}
+		</div>
+	{% endif %}
+
+	<div class="copy text-center">
+		<div class="container">
+			<div class="row">
+				{{ powered }}
+				{{ footer_right }}
 			</div>
 		</div>
-		{%endif%}
+	</div>
+</footer>
+<a href="" id="scroll" title="Scroll to Top" style="display: none;">
+	<i class="fa fa-angle-double-up"></i>
+</a>
 
-		<div class="copy text-center">
-			<div class="container">
-				<div class="row">
-					{{ powered }}
-					{{ footer_right }}
-				</div>
-			</div>
-		</div>
-	</footer>
-	<a href="" id="scroll" title="Scroll to Top" style="display: none;">
-		<i class="fa fa-angle-double-up"></i>
-	</a>
-
-	{% for script in scripts %}
-		<script src="{{ script }}" type="text/javascript"></script>
-	{% endfor %}
-</body></html>
+{% for script in scripts %}
+	<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}</body></html>
