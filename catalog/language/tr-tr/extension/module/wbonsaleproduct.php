@@ -3,4 +3,4 @@
 
 
 // Text
-$_['text_tax']      = 'Ex Tax:';
+$_['text_tax']      = 'Vergiler Hariç:';

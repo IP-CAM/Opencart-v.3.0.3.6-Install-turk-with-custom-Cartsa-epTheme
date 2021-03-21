@@ -88,8 +88,8 @@
                 (function($){
                     $('#Countdown{{ product.product_id }}').countdown({
                         until: new Date({{ product.date_end|date("Y") }}, {{ product.date_end|date("m") }}-1, {{ product.date_end|date("d") }}, {{ product.date_end|date("H") }}, {{ product.date_end|date("i") }}, {{ product.date_end|date("s") }}),
-                        labels: ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'],
-                        labels1: ['Year', 'Month', 'Week', 'Day', 'Hr', 'Min', 'Sec'],
+                        labels: ['Yıl', 'Ay', 'Hafta', 'Gün', 'Saat', 'Dk', 'Sn'],
+                        labels1: ['Yıl', 'Ay', 'Hafta', 'Gün', 'Saat', 'Dk', 'Sn'],
                     });
                     //$('#Countdown<?php echo $product['product_id'];?>').countdown('pause');
                }(jQuery));

@@ -1,3 +1,3 @@
 <?php
 // Heading
-$_['cheading_title'] = 'Shop By Category';
+$_['cheading_title'] = 'Kategoriye Göre Alışveriş';
