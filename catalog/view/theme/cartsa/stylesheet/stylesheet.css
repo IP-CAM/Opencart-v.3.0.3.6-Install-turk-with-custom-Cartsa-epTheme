@@ -394,7 +394,7 @@ div.required .control-label:before {
     transition-delay: 0s;
 }
 .home-page #under-menu {
-	display: block;
+	/* display: block; */
 }
 #menu .thumb_img {
     position: relative;
