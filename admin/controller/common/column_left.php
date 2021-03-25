@@ -34,6 +34,14 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);
 			}
+
+			if ($this->user->hasPermission('access', 'catalog/product_manager')) {
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_product_manager'),
+					'href'     => $this->url->link('catalog/product_manager', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()		
+				);
+			}
 			
 			if ($this->user->hasPermission('access', 'catalog/recurring')) {
 				$catalog[] = array(

@@ -45,6 +45,7 @@ $_['text_option']               = 'Seçenekler';
 $_['text_order']                = 'Siparişler';
 $_['text_order_status']         = 'Sipariş Durumları';
 $_['text_product']              = 'Ürünler';
+$_['text_product_manager']      = 'Hızlı Ürün Düzenleme';
 $_['text_reports']              = 'Raporlar';
 $_['text_review']               = 'Yorumlar';
 $_['text_return']               = 'Ürün İadeleri';
