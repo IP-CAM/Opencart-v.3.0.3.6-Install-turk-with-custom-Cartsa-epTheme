@@ -5,7 +5,7 @@ $_['heading_title']       = 'Hızlı ürün Düzenleme';
 
 // Text
 $_['text_success']        = 'Başarılı: Seçenekler başarılı bir şekilde eklendi!';
-$_['text_list']           = 'Seçenek Listesi';
+$_['text_list']           = 'Ürün Listesi';
 $_['text_add']            = 'Seçenek Ekle';
 $_['text_edit']           = 'Seçenek Düzenle';
 $_['text_choose']         = 'Seçiniz';

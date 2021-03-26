@@ -1,5 +1,5 @@
 {{ header }}{{ column_left }}
-<div id="content">
+<div id="content" ng-app="app">
 	<div class="page-header">
 		<div class="container-fluid">
 			<h1>{{ heading_title }}</h1>
@@ -12,7 +12,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid" ng-controller="productController">
 		<div class="row">
 			<div id="filter-product" class="col-md-3 col-md-push-9 col-sm-12 hidden-sm hidden-xs">
 				<div class="panel panel-default">
@@ -22,17 +22,72 @@
 							{{ text_filter }}</h3>
 					</div>
 					<div class="panel-body">
-						<ul>
-							{% for id in deneme %}
-								<li>
-									{{id}}
-								</li>
-							{% endfor %}
-						</ul>
+						<div class="form-group">
+							<label class="control-label" for="input-name">Ürün Adı</label>
+							<input type="text" placeholder="Ürün Adı" id="input-name" ng-model="filter.filter_name" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="input-model">Ürün Kodu</label>
+							<input type="text" placeholder="Ürün Kodu" id="input-model" ng-model="filter.filter_model" class="form-control" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="input-price">Fiyat</label>
+							<input type="text" placeholder="Fiyatı" id="input-price" ng-model="filter.filter_price" class="form-control">
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="input-quantity">Adet</label>
+							<input type="text" placeholder="Fiyat" id="input-quantity" ng-model="filter.filter_quantity" class="form-control">
+						</div>
+						<div class="form-group text-right">
+							<button type="button" class="btn btn-default" ng-click="applyFilter()">
+								<i class="fa fa-filter"></i>
+								Filtrele</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 col-md-pull-3 col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<i class="fa fa-list"></i>
+							{{ text_list }}</h3>
+					</div>
+					<div class="panel-body">
+						<form method="post" enctype="multipart/form-data">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<td class="text-center">Resim</td>
+											<td class="text-left">Ürün Adı</td>
+											<td class="text-left">Ürün Kodu</td>
+											<td class="text-right">Fiyatı</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="product in products">
+											<td class="text-center">
+												<img src="{[{product.image}]}" alt="{[{product.name}]}" class="img-thumbnail">
+											</td>
+											<td class="text-left">{[{product.name}]}"</td>
+											<td class="text-left">{[{product.model}]}</td>
+											<td class="text-right">
+												<span style="text-decoration: line-through;"></span><br>
+												<div class="text-danger">{[{product.price}]}</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script src="view/javascript/angular.min.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="view/javascript/product_manager.js" type="text/javascript"></script>
 {{ footer }}
