@@ -30,13 +30,11 @@ class ControllerCatalogProductManager extends Controller
             ),
         ];
 
-        $ids = $this->model_catalog_product_manager->getHasProducOption([35,47,42,30],12);
+        $not_exist_ids = $this->model_catalog_product_manager->getNotHasProductOption([35, 47, 42, 30],12);
 
-        foreach ($ids as $id) {
-			$data['deneme'][] = array(
-				'product_id'  => $id['product_id']
-			);
-		}
+        if(count($not_exist_ids)>0){
+            $this->model_catalog_product_manager->addProductOption($not_exist_ids,12,'value',1);
+        }
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
