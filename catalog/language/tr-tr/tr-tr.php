@@ -74,3 +74,26 @@ $_['error_curl']            = 'CURL: Hata Kodu(%s): %s';
 
 // Datepicker
 $_['datepicker']            = 'tr';
+$_['shop_now']              = 'Şimdi satın al';
+
+$_['offer_title']      = 'Seçili Ürünlerde% 30 İndirim';
+$_['text_vmore']      = 'Devamını Gör';
+$_['head_title']      = 'Popüler Ürün';
+$_['headsub_title']      = 'haftalık satır başına en iyi ürünü ekle';
+$_['fea_title']       = 'Özellikli';
+$_['Brand_title']       = 'Marka:';
+$_['best_title']      = 'En Çok Satanlar';
+$_['latest_title']    = 'En Son';
+$_['headingsub_title']    = 'Yeni Ürün';
+$_['pro_sale']    = 'İndirimli Fiyat';
+$_['pro_new']    = 'Yeni';
+$_['cat_hed']    = 'Kategori';
+$_['oc_title']    = 'Günün Fırsatları';
+$_['onsale_title'] = 'Özel Ürünler';
+$_['onsalesub_title'] = 'İndirimli ürünlerden haftalık sıraya';
+$_['speheading_title'] = 'En Son Ürünler';
+$_['spesubheading_title'] = 'Haftalık diziye özel ürünler ekleyin';
+$_['read_more'] = 'Devamını Oku';
+$_['text_relatedsub'] = 'İlgili Ürünü haftalık diziye ekleyin';
+$_['atleast_cart'] = 'En Az Bir veya Daha Fazla Miktar';
+$_['catepro'] = 'Öğeler';

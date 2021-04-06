@@ -1,6 +1,4 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
-
 // Text
 $_['text_home']          = 'Anasayfa';
 $_['text_wishlist']      = 'A. Listem (%s)';
@@ -16,3 +14,10 @@ $_['text_logout']        = 'Çıkış Yap';
 $_['text_checkout']      = 'Kasaya Git';
 $_['text_search']        = 'Ara';
 $_['text_all']           = 'Tümü Göster';
+$_['text_maincart']      = 'Sepetim';
+$_['text_comparepro']    = 'Karşılaştır';
+$_['text_specialoff']    = 'Özel Teklif';
+$_['text_contacts']      = 'İletişim';
+$_['text_brand']         = 'Marka';
+$_['text_returns']       = 'İade';
+$_['text_blog']          = 'Blog';

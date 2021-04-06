@@ -15,3 +15,5 @@ $_['text_order']        = 'Siparişlerim';
 $_['text_wishlist']     = 'Alışveriş Listem';
 $_['text_newsletter']   = 'Bülten Aboneliği';
 $_['text_powered']      = '%s &copy; %s - Tüm Hakları Saklıdır.';
+
+$_['text_others']       = 'Diğer Katalog';

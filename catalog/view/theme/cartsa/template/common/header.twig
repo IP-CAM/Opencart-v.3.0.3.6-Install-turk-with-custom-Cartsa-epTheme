@@ -859,10 +859,10 @@
           <ul class="list-inline st-menu hidden-xs">
             <li><a href="{{ home }}">{{ text_home }}</a></li>
             <li><a href="{{ special }}">{{ text_specialoff }}</a></li>
-            <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+{#             <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li> #}
             <li><a href="{{ return }}">{{ text_returns }}</a></li>
-            <li><a href="{{ brand }}">{{ text_brand }}</a></li>
-            <li><a href="{{ blog }}">{{ text_blog }}</a></li>
+{#             <li><a href="{{ brand }}">{{ text_brand }}</a></li>
+            <li><a href="{{ blog }}">{{ text_blog }}</a></li> #}
             <li><a href="{{ contact }}">{{ text_contacts }}</a></li>
           </ul>
       </div>
@@ -881,8 +881,8 @@
             <li><a href="{{ download }}"><svg width="16px" height="16px"><use xlink:href="#acdownload"></use></svg>{{ text_download }}</a></li>
             <li><a href="{{ logout }}"><svg width="16px" height="16px"><use xlink:href="#aclogout"></use></svg>{{ text_logout }}</a></li>
             {% else %}
-            <h5 class="text-left">Your Account</h5>
-            <h6 class="text-left">Access account and manage orders</h6>
+            <h5 class="text-left">Hesabım</h5>
+            <h6 class="text-left">Hesaba erişin ve siparişleri yönetin</h6>
             <li class="acd"><a href="{{ register }}"><i class="fa fa-user-plus"></i> {{ text_register }}</a></li><li class="acd"><a href="{{ login }}"><i class="fa fa-lock"></i> {{ text_login }}</a></li>
             {% endif %}
             <li class="wishcom hidden-lg hidden-md"><a href="{{ compare }}"><!-- <svg width="16px" height="16px"><use xlink:href="#compare"></use></svg> --><i class="fa fa-compress"></i> {{ text_comparepro }}</a></li>
@@ -905,7 +905,7 @@
           {{ search }}
       </div>
       <div id="sblock" class="col-lg-2 col-md-2 col-sm-8 col-xs-12 midheadleft text-right">
-        <svg width="20px" height="20px"><use xlink:href="#sale"></use></svg><a href="{{ special }}">special offer! </a>
+        <svg width="20px" height="20px"><use xlink:href="#sale"></use></svg><a href="{{ special }}">Özel Teklifler! </a>
       </div>
     </div>
   </div>
