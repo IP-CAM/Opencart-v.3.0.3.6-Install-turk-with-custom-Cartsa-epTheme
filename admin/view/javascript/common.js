@@ -23,6 +23,27 @@ function getURLVar(key) {
 }
 
 $(document).ready(function() {
+
+	function toSeoUrl(url) {
+		return url.toString()               // Convert to string
+			.normalize('NFD')               // Change diacritics
+			.replace(/[\u0300-\u036f]/g,'') // Remove illegal characters
+			.replace(/\s+/g,'-')			// Change whitespace to dashes
+			.replace(/İ/g,'I')
+			.replace(/ı/g,'i')            
+			.toLowerCase()                  // Change to lowercase
+			.replace(/&/g,'-and-')          // Replace ampersand
+			.replace(/[^a-z0-9\-]/g,'')     // Remove anything that is not a letter, number or dash
+			.replace(/-+/g,'-')             // Remove duplicate dashes
+			.replace(/^-*/,'')              // Remove starting dashes
+			.replace(/-*$/,'');             // Remove trailing dashes
+	}
+
+	$('[name="product_description[1][name]"]').change(function(){
+		console.log(this);
+		$('[name="product_seo_url[0][1]"]').val(toSeoUrl($(this).val()))
+	});
+
 	//Form Submit for IE Browser
 	$('button[type=\'submit\']').on('click', function() {
 		$("form[id*='form-']").submit();
