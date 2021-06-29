@@ -3,7 +3,7 @@
 		<form id="formNewLestter" method="post" action="{{ action }}" class="formNewLestter" {% if banner is not empty%} style="background-image: url('{{ banner }}')" {% endif %}>
 			<div class="inner">
 				
-				<div id="newsletter" class="col-lg-9 col-md-8 col-xs-12 col-sm-6 text-left">
+				<div id="newsletter" class="col-lg-12">
 					<h2>{{ entry_sign_up_for_newsletter }}</h2>
 					<div class="input-group">
 					<input type="text" class="form-control input-md inputNew" {% if customer_email is not defined %} onblur="javascript:if(this.value=='')this.value='{{ default_input_text }}';" onfocus="javascript:if(this.value=='{{ default_input_text }}')this.value='';"{% endif %} value="{{ customer_email? customer_email : default_input_text }}" size="18" name="email" placeholder="{{default_input_text}}">
@@ -20,14 +20,14 @@
 				</div> -->
 			</div>
 
-			<div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 text-right">
+			{# <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 text-right">
 					<ul class="list-unstyled fsocial list-inline">
 					    <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
 					    <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
 					    <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
 					    <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
 					</ul>
-			</div>
+			</div> #}
 		</div>
 		</form>
 </div>
