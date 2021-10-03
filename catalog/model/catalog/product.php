@@ -349,6 +349,8 @@ class ModelCatalogProduct extends Model {
 					'product_option_value_id' => $product_option_value['product_option_value_id'],
 					'option_value_id'         => $product_option_value['option_value_id'],
 					'name'                    => $product_option_value['name'],
+					'mockupValue'             => $product_option_value['mockupValue'],
+                    'mockupTextValue'         => $product_option_value['mockupTextValue'],
 					'image'                   => $product_option_value['image'],
 					'quantity'                => $product_option_value['quantity'],
 					'subtract'                => $product_option_value['subtract'],
@@ -364,6 +366,8 @@ class ModelCatalogProduct extends Model {
 				'product_option_value' => $product_option_value_data,
 				'option_id'            => $product_option['option_id'],
 				'name'                 => $product_option['name'],
+				'mockupKey'            => $product_option['mockupKey'],
+                'maxLength'            => $product_option['maxLength'],
 				'type'                 => $product_option['type'],
 				'value'                => $product_option['value'],
 				'required'             => $product_option['required']

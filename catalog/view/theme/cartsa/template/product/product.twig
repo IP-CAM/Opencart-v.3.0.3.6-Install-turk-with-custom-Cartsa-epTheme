@@ -40,8 +40,12 @@
                             <div class="row">
                             <li id="gallery_01" class="owl-carousel">
                                 {% for image in images %}
+                                {% set imgId = "" %}
+                                {% if (loop.first) %}
+                                  {% set imgId = 'mockupImage' %}
+                                {% endif %}
                                 <a data-zoom-image="{{ image.popup }}" data-image="{{ image.popup }}"  href="{{ image.popup }}" class="col-xs-12">
-                                    <img src="{{ image.thumb }}" class="img-responsive center-block" alt="additional image">
+                                    <img id="{{imgId}}" src="{{ image.thumb }}" class="img-responsive center-block" alt="additional image">
                                 </a>
                                 {% endfor %}
                             </li>
@@ -116,20 +120,38 @@
             </div>
             {% endif %}
             {% if option.type == 'radio' %}
-            <div class="form-group{% if option.required %} required {% endif %}">
-              <label class="control-label text-decorop">{{ option.name }}</label>
-              <div id="input-option{{ option.product_option_id }}" class="custom-radio"> {% for option_value in option.product_option_value %}
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" />
-                    {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
-                    {{ option_value.name }}
-                    {% if option_value.price %}
-                    ({{ option_value.price_prefix }}{{ option_value.price }})
-                    {% endif %} </label>
+              {% if (option.mockupKey == null) %} 
+                <div class="form-group{% if option.required %} required {% endif %}">
+                  <label class="control-label text-decorop">{{ option.name }}</label>
+                  <div id="input-option{{ option.product_option_id }}" class="custom-radio"> {% for option_value in option.product_option_value %}
+                    <div class="radio">
+                      <label>
+                        <input type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" />
+                        {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
+                        {{ option_value.name }}
+                        {% if option_value.price %}
+                        ({{ option_value.price_prefix }}{{ option_value.price }})
+                        {% endif %} </label>
+                    </div>
+                    {% endfor %} 
+                  </div>
                 </div>
-                {% endfor %} </div>
-            </div>
+                {% else %}
+                  <div class="form-group{% if option.required %} required {% endif %}">
+                    <label class="control-label text-decorop">{{ option.name }}</label>
+                    <div id="input-option{{ option.product_option_id }}" class="custom-radio"> {% for option_value in option.product_option_value %}
+                      <div class="radio">
+                        <label>
+                          <input mockup-key="{{ option.mockupKey }}" mockup-value="{{ option_value.mockupValue }}" type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" />
+                          {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
+                          {{ option_value.name }}
+                          {% if option_value.price %}
+                          ({{ option_value.price_prefix }}{{ option_value.price }})
+                          {% endif %} </label>
+                      </div>
+                      {% endfor %} </div>
+                </div>
+              {% endif %}
             {% endif %}
             {% if option.type == 'checkbox' %}
             <div class="form-group{% if option.required %} required {% endif %}">
