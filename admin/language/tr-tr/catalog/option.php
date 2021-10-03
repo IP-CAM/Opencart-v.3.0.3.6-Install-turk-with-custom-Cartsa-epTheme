@@ -1,5 +1,5 @@
 <?php
-/* Turkceye Ceviren eka7a - http://e-piksel.com */
+/* Turkceye Ceviren eka7a - http://www.opencart-tr.com */
 
 // Heading
 $_['heading_title']       = 'Seçenekler';
@@ -27,6 +27,12 @@ $_['text_value']          = 'Seçenek Değeri';
 $_['column_name']         = 'Seçenek Adı';
 $_['column_sort_order']   = 'Sıralama';
 $_['column_action']       = 'Eylem';
+
+//Mockup
+$_['entry_mockup_key']   = 'Mockup Keyi';
+$_['entry_mockup_value'] = 'Mockup Değeri';
+$_['entry_max_length']   = 'Karakter Uzunluğu';
+$_['entry_mockup_text_value'] = 'Yazı Rengi';
 
 // Entry
 $_['entry_name']         = 'Seçenek Adı';

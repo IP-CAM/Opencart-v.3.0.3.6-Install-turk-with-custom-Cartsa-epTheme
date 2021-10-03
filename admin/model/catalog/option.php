@@ -1,7 +1,7 @@
 <?php
 class ModelCatalogOption extends Model {
 	public function addOption($data) {
-		$this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "'");
+		$this->db->query("INSERT INTO `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "', maxLength = '" . (int)$data['maxLength'] . "', mockupKey = '" . $data['mockupKey'] . "'");
 
 		$option_id = $this->db->getLastId();
 
@@ -11,7 +11,7 @@ class ModelCatalogOption extends Model {
 
 		if (isset($data['option_value'])) {
 			foreach ($data['option_value'] as $option_value) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', mockupValue = '" . $option_value['mockupValue'] . "', mockupTextValue = '" . $option_value['mockupTextValue'] . "'");
 
 				$option_value_id = $this->db->getLastId();
 
@@ -25,7 +25,7 @@ class ModelCatalogOption extends Model {
 	}
 
 	public function editOption($option_id, $data) {
-		$this->db->query("UPDATE `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "' WHERE option_id = '" . (int)$option_id . "'");
+		$this->db->query("UPDATE `" . DB_PREFIX . "option` SET type = '" . $this->db->escape($data['type']) . "', sort_order = '" . (int)$data['sort_order'] . "', maxLength = '" . (int)$data['maxLength'] . "', mockupKey = '" . $data['mockupKey'] . "' WHERE option_id = '" . (int)$option_id . "'");
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "option_description WHERE option_id = '" . (int)$option_id . "'");
 
@@ -39,9 +39,9 @@ class ModelCatalogOption extends Model {
 		if (isset($data['option_value'])) {
 			foreach ($data['option_value'] as $option_value) {
 				if ($option_value['option_value_id']) {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_value_id = '" . (int)$option_value['option_value_id'] . "', option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_value_id = '" . (int)$option_value['option_value_id'] . "', option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', mockupValue = '" . $option_value['mockupValue'] . "', mockupTextValue = '" . $option_value['mockupTextValue'] . "'");
 				} else {
-					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "'");
+					$this->db->query("INSERT INTO " . DB_PREFIX . "option_value SET option_id = '" . (int)$option_id . "', image = '" . $this->db->escape(html_entity_decode($option_value['image'], ENT_QUOTES, 'UTF-8')) . "', sort_order = '" . (int)$option_value['sort_order'] . "', mockupValue = '" . $option_value['mockupValue'] . "', mockupTextValue = '" . $option_value['mockupTextValue'] . "'");
 				}
 
 				$option_value_id = $this->db->getLastId();
@@ -137,7 +137,9 @@ class ModelCatalogOption extends Model {
 				'option_value_id' => $option_value['option_value_id'],
 				'name'            => $option_value['name'],
 				'image'           => $option_value['image'],
-				'sort_order'      => $option_value['sort_order']
+				'sort_order'      => $option_value['sort_order'],
+				'mockupValue'     => $option_value['mockupValue'],
+                'mockupTextValue' => $option_value['mockupTextValue']
 			);
 		}
 
@@ -162,7 +164,9 @@ class ModelCatalogOption extends Model {
 				'option_value_id'          => $option_value['option_value_id'],
 				'option_value_description' => $option_value_description_data,
 				'image'                    => $option_value['image'],
-				'sort_order'               => $option_value['sort_order']
+				'sort_order'               => $option_value['sort_order'],
+				'mockupValue'              => $option_value['mockupValue'],
+                'mockupTextValue'          => $option_value['mockupTextValue']
 			);
 		}
 

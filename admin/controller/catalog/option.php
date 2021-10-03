@@ -124,7 +124,7 @@ class ControllerCatalogOption extends Controller {
 		}
 
 		if (isset($this->request->get['page'])) {
-			$page = $this->request->get['page'];
+			$page = (int)$this->request->get['page'];
 		} else {
 			$page = 1;
 		}
@@ -334,6 +334,22 @@ class ControllerCatalogOption extends Controller {
 			$data['sort_order'] = '';
 		}
 
+		if (isset($this->request->post['maxLength'])) {
+            $data['maxLength'] = $this->request->post['maxLength'];
+        } elseif (!empty($option_info)) {
+            $data['maxLength'] = $option_info['maxLength'];
+        } else {
+            $data['maxLength'] = '';
+        }
+
+        if (isset($this->request->post['mockupKey'])) {
+            $data['mockupKey'] = $this->request->post['mockupKey'];
+        } elseif (!empty($option_info)) {
+            $data['mockupKey'] = $option_info['mockupKey'];
+        } else {
+            $data['mockupKey'] = '';
+        }
+
 		if (isset($this->request->post['option_value'])) {
 			$option_values = $this->request->post['option_value'];
 		} elseif (isset($this->request->get['option_id'])) {
@@ -360,7 +376,9 @@ class ControllerCatalogOption extends Controller {
 				'option_value_description' => $option_value['option_value_description'],
 				'image'                    => $image,
 				'thumb'                    => $this->model_tool_image->resize($thumb, 100, 100),
-				'sort_order'               => $option_value['sort_order']
+				'sort_order'               => $option_value['sort_order'],
+				'mockupValue'              => $option_value['mockupValue'],
+                'mockupTextValue'          => $option_value['mockupTextValue']
 			);
 		}
 
