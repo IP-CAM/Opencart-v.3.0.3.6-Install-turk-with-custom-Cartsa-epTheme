@@ -34,7 +34,7 @@
 		<h1 class="heading text-center">
 			<span>{{ cheading_title }}</span>
 		</h1>
-		<div id="cat-img" class="owl-carousel owl-theme" style="padding:30px 0px;">
+		<div style="padding:30px 0px;">
 			{% for category in categories %}
 				<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
 					<a href="{{ category.href }}">
@@ -55,23 +55,3 @@
 	</div>
 </section>
 
-<script type="text/javascript">
- $(document).ready(function() {
-    $("#cat-img").owlCarousel({
-    itemsCustom : [
-    [0, 1],
-    [320, 2],
-    [400, 3],
-    [600, 3],
-    [768, 4],
-    [992, 5],
-    [1200, 6],
-    [1410, 7]
-    ],
-      // autoPlay: 6000,
-      navigationText: ['<svg><use xlink:href="#arrow-left"></use></svg>', '<svg><use xlink:href="#arrow-right"></use></svg>'],
-      navigation : false,
-      pagination:false
-    });
-});
-</script>

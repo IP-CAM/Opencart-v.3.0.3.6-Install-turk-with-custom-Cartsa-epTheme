@@ -5,9 +5,9 @@ class ControllerExtensionModuleWbcategorynew extends Controller {
 
 		$this->load->model('tool/image');
 
-		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.carousel.css');
+/* 		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.carousel.css');
 		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.theme.css');
-		$this->document->addScript('catalog/view/javascript/jquery/swiper/js/owl.carousel.min.js');
+		$this->document->addScript('catalog/view/javascript/jquery/swiper/js/owl.carousel.min.js'); */
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
