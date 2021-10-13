@@ -1,4 +1,8 @@
 <style>
+.w-100 {
+    width: 100%!important;
+}
+
 .newSectionsItem {
     padding-left: 6px;
     padding-right: 6px;
@@ -32,37 +36,20 @@
 		</h1>
 		<div id="cat-img" class="owl-carousel owl-theme" style="padding:30px 0px;">
 			{% for category in categories %}
-				{% if category.category_id == category_id %}
-					<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
-						<a href="{{ category.href }}">
-							<div class="bannerImage">
+				<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
+					<a href="{{ category.href }}">
+						<div class="bannerImage">
                             {% if category.image_name %}
-										<img src="{{ category.image_name }}" class="w-100" alt="" style="background-color:#dff8f6">
-									{% else %}
-										<img src="image/no_image.png" class="w-100" alt="">
-									{% endif %}
-							</div>
-							<div class="bannerText" style="background-color:#dff8f6">
-								{{ category.name }}
-							</div>
-						</a>
-					</div>
-				{% else %}
-					<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
-						<a href="{{ category.href }}">
-							<div class="bannerImage">
-                            {% if category.image_name %}
-										<img src="{{ category.image_name }}" class="w-100 center-block" alt="" style="background-color:#dff8f6">
-									{% else %}
-										<img src="image/no_image.png" class="w-100 center-block" alt="">
-									{% endif %}
-							</div>
-							<div class="bannerText center-block" style="background-color:#dff8f6">
-								{{ category.name }}
-							</div>
-						</a>
-					</div>
-				{% endif %}
+						    	<img src="{{ category.image_name }}" class="w-100" alt="" style="background-color:#dff8f6">
+						    {% else %}
+						    	<img src="image/no_image.png" class="w-100" alt="">
+						    {% endif %}
+						</div>
+						<div class="bannerText" style="background-color:#dff8f6">
+							{{ category.name }}
+						</div>
+					</a>
+				</div>
 			{% endfor %}
 		</div>
 	</div>
