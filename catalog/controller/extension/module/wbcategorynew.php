@@ -5,9 +5,9 @@ class ControllerExtensionModuleWbcategorynew extends Controller {
 
 		$this->load->model('tool/image');
 
-/* 		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.carousel.css');
+		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.carousel.css');
 		$this->document->addStyle('catalog/view/javascript/jquery/swiper/css/owl.theme.css');
-		$this->document->addScript('catalog/view/javascript/jquery/swiper/js/owl.carousel.min.js'); */
+		$this->document->addScript('catalog/view/javascript/jquery/swiper/js/owl.carousel.min.js');
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
@@ -65,7 +65,7 @@ class ControllerExtensionModuleWbcategorynew extends Controller {
 				'totalp'	  => $this->config->get('config_product_count') ? $this->model_catalog_product->getTotalProducts($filter_data) : '',
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
-                'image_name'  => $this->model_tool_image->resize($category_info['image'], 600,900)
+                'image_name'  => $this->model_tool_image->resize($category_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'))
 			);
 		}
                  /*Custom Category image*/
