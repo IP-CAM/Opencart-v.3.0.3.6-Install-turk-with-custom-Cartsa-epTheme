@@ -1,52 +1,72 @@
-<div class="container">
-    <div class="homecategory martb">
-    <h1 class="heading text-center"><span>{{ cheading_title }}</span></h1>
-        <div id="cat-img" class="owl-carousel owl-theme">
-            {% for category in categories %}
-                {% if category.category_id == category_id %}
-                    <div class="block-cat-wr col-xs-12 cless">
-                        <div class="categorybr">
-                        <a href="{{ category.href }}">
-                            <div class="">
-                                {% if category.image_name %}
-                                    <img src="{{ category.image_name }}" class="img-responsive" alt="">
-                                {% else %}
-                                    <img src="image/no_image.png" class="img-responsive" alt="">
-                                {% endif %}
-                            </div>
-                            <div class="catcontent text-center">
-                                <h2><span>{{ category.name }}</span></h2>
-                                <!-- <h6 class="catepro">{{category.totalp}} {{catepro}}</h6>
-                                <h4>view all <i class="fa fa-arrow-right"></i></h4> -->
-                            </div>
-                        </a>
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="block-cat-wr col-xs-12 cless">
-                        <div class="categorybr">
-                        <a href="{{ category.href }}">
-                            <div class="cateimg">
-                                {% if category.image_name %}
-                                   <img src="{{ category.image_name }}" class="img-responsive center-block" alt="">
-                                {% else %}
-                                    <img src="image/no_image.png" class="img-responsive center-block" alt="">
-                                {% endif %}
-                            </div>
+<style>
+.newSectionsItem {
+    padding-left: 6px;
+    padding-right: 6px;
+    flex: 0 0 21.666667%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 21.6667%;
+    max-width: 21.666667%;
+}
+.topBannerItem .bannerText {
+    height: 58px;
+    text-align: center;
+    font-size: 15px;
+    background-color: #dff8f6;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    line-height: 58px;
+    font-family: Geomanist Medium;
+}
 
-                            <div class="catcontent text-center">
-                                <h2><span>{{ category.name }}</span></h2>
-                                <!-- <h6 class="catepro">{{category.totalp}} {{catepro}}</h6>
-                                <h4>view all <svg width="12px" height="12px"><use xlink:href="#rarrow"></use></svg></h4> -->
-                            </div>
-                        </a>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>     
-    </div>
-</div>
+.topBannerItem .bannerImage img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+</style>
+
+<section class="container-fluid mt-4">
+	<div class="homecategory martb">
+		<h1 class="heading text-center">
+			<span>{{ cheading_title }}</span>
+		</h1>
+		<div id="cat-img" class="owl-carousel owl-theme" style="padding:30px 0px;">
+			{% for category in categories %}
+				{% if category.category_id == category_id %}
+					<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
+						<a href="{{ category.href }}">
+							<div class="bannerImage">
+                            {% if category.image_name %}
+										<img src="{{ category.image_name }}" class="w-100" alt="" style="background-color:#dff8f6">
+									{% else %}
+										<img src="image/no_image.png" class="w-100" alt="">
+									{% endif %}
+							</div>
+							<div class="bannerText" style="background-color:#dff8f6">
+								{{ category.name }}
+							</div>
+						</a>
+					</div>
+				{% else %}
+					<div class="col-xs-12 col-sm-12 col-md-4 topBannerItem newSectionsItem">
+						<a href="{{ category.href }}">
+							<div class="bannerImage">
+                            {% if category.image_name %}
+										<img src="{{ category.image_name }}" class="w-100 center-block" alt="" style="background-color:#dff8f6">
+									{% else %}
+										<img src="image/no_image.png" class="w-100 center-block" alt="">
+									{% endif %}
+							</div>
+							<div class="bannerText center-block" style="background-color:#dff8f6">
+								{{ category.name }}
+							</div>
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>
 
 <script type="text/javascript">
  $(document).ready(function() {
