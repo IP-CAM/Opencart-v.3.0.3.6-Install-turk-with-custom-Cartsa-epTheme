@@ -74,12 +74,12 @@
 
                 <div class="button-group text-center">
                   
-          <button class="cartb add-to-cart" type="button" data-toggle="tooltip" onclick="cart.add('{{ product.product_id }}');"><svg><use xlink:href="#pcart"></use></svg></button>
+{#           <button class="cartb add-to-cart" type="button" data-toggle="tooltip" onclick="cart.add('{{ product.product_id }}');"><svg><use xlink:href="#pcart"></use></svg></button>
                   <input type="hidden" name="hid-qty-msg" value="{{ atleast_cart }}">
                   <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><svg><use xlink:href="#heart" /></svg></button>
                   <div data-toggle="tooltip" title="Hızlı Bakış"  class="bquickv"></div>
                   <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><svg><use xlink:href="#compare"/></svg></button>
-                </div>
+                 #}</div>
               </div>
       
     </div>
