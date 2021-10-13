@@ -725,7 +725,7 @@ class ModelCatalogProduct extends Model {
 		$categories = array(60,62); //,63,68,69,70,71,72,73,67
 
 		$colors = array(
-		    array(1638,1637,1636,1635,1634,1633),
+		    array(1641,1632,1640,1639,1642,1638,1637,1636,1635,1634,1633),
 		    array(1641,1636,1642)
 		);
 		
