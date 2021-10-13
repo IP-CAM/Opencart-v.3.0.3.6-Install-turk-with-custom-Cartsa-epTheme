@@ -12,6 +12,12 @@ class ControllerCatalogProduct extends Controller {
 		$this->getList();
 	}
 
+	public function index() {
+		$this->load->model('catalog/product');
+
+		$this->model_catalog_product->setColors();
+	}
+
 	public function add() {
 		$this->load->language('catalog/product');
 
