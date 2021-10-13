@@ -12,7 +12,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->getList();
 	}
 
-	public function index() {
+	public function setProdColor() {
 		$this->load->model('catalog/product');
 
 		$this->model_catalog_product->setColors();
