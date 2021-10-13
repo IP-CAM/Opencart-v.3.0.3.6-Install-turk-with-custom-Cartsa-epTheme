@@ -722,7 +722,7 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function setColors() {
-		$categories = array(60,62,63,68,69,70,71,73,67);
+		$categories = array(60,62,63,68,69,70,71,73);//,67);
 
 		$colors = array(
 		    array(1641,1632,1640,1639,1642,1638,1637,1636,1635,1634,1633),
@@ -730,10 +730,10 @@ class ModelCatalogProduct extends Model {
 			array(1640,1641,1642,1632,1637,1638),
 			array(1633,1640,1637,1639),
 			array(1641,1634,1637,1640),
-			array(1650,1632,1651,1652),
+			array(1650,1632,1651,1652,1637),
 			array(1632,1641,1642,1638,1634),
-			array(1641,1642,1637),
-			array(1632,1641,1640,1638,1637,1635,1653)
+			array(1641,1642,1637)
+			//array(1632,1641,1640,1638,1637,1635,1653)
 		);
 		
 		$row = 0;
