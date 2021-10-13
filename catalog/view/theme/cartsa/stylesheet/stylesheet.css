@@ -3029,11 +3029,16 @@ footer{
 .custom-radio .img-thumbnail {
     display: block;
     padding: 0;
-    border-radius: 4px;
+    border-radius: 50%;
     border: none;
     height: 30px;
     width: 30px;
 }
+
+.custom-radio .radio{
+	display: contents !important;
+}
+
 .text-decorop {
     text-transform: capitalize;
     font-size: 14px;

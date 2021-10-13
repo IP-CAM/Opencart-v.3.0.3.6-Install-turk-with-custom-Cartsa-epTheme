@@ -142,7 +142,7 @@
                     <div id="input-option{{ option.product_option_id }}" class="custom-radio"> {% for option_value in option.product_option_value %}
                       <div class="radio">
                         <label>
-                          <input mockup-key="{{ option.mockupKey }}" mockup-value="{{ option_value.mockupValue }}" type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" />
+                          <input mockup-key="{{ option.mockupKey }}" mockup-value="{{ option_value.mockupValue }}" type="radio" name="option[{{ option.product_option_id }}]" value="{{ option_value.product_option_value_id }}" style="display:none" />
                           {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
                           {{ option_value.name }}
                           {% if option_value.price %}
