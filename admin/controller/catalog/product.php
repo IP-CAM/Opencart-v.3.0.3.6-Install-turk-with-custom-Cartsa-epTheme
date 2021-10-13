@@ -20,6 +20,9 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		$this->model_catalog_product->setColors();
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput("{isSuccess: true}");
 	}
 
 	public function add() {

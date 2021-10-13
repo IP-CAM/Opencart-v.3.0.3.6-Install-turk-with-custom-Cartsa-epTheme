@@ -731,7 +731,7 @@ class ModelCatalogProduct extends Model {
 		
 		for ($row = 0; $row < count($categories); $row++) {
 		    for ($col = 0; $col < count($colors[$row]); $col++) {
-		        $sql = "INSERT INTO oc_product_option_value (product_option_id, product_id, option_id, option_value_id, quantity, subtract, price, price_prefix, points, points_prefix, weight, weight_prefix) SELECT product_option_id, product_id, option_id, ". $colors[$row][$col] . ", 0, 0, 0, \'+\', 0, \'+\', 0, \'+\' FROM oc_product_option WHERE product_id IN(SELECT DISTINCT product_id FROM oc_product_to_category WHERE category_id LIKE ". $categories[$row] .")";
+		        $sql = "INSERT INTO oc_product_option_value (product_option_id, product_id, option_id, option_value_id, quantity, subtract, price, price_prefix, points, points_prefix, weight, weight_prefix) SELECT product_option_id, product_id, option_id, ". $colors[$row][$col] . ", 0, 0, 0, '+', 0, '+', 0, '+' FROM oc_product_option WHERE product_id IN(SELECT DISTINCT product_id FROM oc_product_to_category WHERE category_id LIKE ". $categories[$row] .")";
 
 				$query = $this->db->query($sql);
 		    }
