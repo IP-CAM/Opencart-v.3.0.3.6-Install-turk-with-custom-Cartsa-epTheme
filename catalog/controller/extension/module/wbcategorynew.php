@@ -65,7 +65,7 @@ class ControllerExtensionModuleWbcategorynew extends Controller {
 				'totalp'	  => $this->config->get('config_product_count') ? $this->model_catalog_product->getTotalProducts($filter_data) : '',
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
-                'image_name'  => $this->model_tool_image->resize($category_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_category_height'))
+                'image_name'  => $this->model_tool_image->resize($category_info['image'], 600,900)
 			);
 		}
                  /*Custom Category image*/
