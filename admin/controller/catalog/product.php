@@ -13,6 +13,10 @@ class ControllerCatalogProduct extends Controller {
 	}
 
 	public function setProdColor() {
+		$this->load->language('catalog/product');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
 		$this->load->model('catalog/product');
 
 		$this->model_catalog_product->setColors();
