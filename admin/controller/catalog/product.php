@@ -25,6 +25,19 @@ class ControllerCatalogProduct extends Controller {
 		$this->response->setOutput("{isSuccess: true}");
 	}
 
+	public function setPhoneModel() {
+		$this->load->language('catalog/product');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('catalog/product');
+
+		$this->model_catalog_product->setPhoneModels();
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput("{isSuccess: true}");
+	}
+
 	public function add() {
 		$this->load->language('catalog/product');
 
