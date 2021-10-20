@@ -1,0 +1,32 @@
+{% if(offer_heading_text) %}
+<p><a onclick="opencarttools_bganygrp();" class="btn btn-primary"><span>{{ offer_heading_text }}</span></a></p>
+<style>.opencarttools_bganygrpbody {overflow:hidden} .overlayopencarttools_bganygrp{position:fixed;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,0.7);transition:opacity 500ms;display:none;opacity:0;z-index:999999999}
+.overlayopencarttools_bganygrp:target{visibility:visible;opacity:1}
+.opencarttools_bganygrp{margin:40px auto;padding:20px;background:#fff;border-radius:5px;width:70%;position:relative;transition:all 5s ease-in-out}
+.opencarttools_bganygrp h2{margin-top:0;color:#333;font-family:Tahoma,Arial,sans-serif}
+.opencarttools_bganygrp .closeopencarttools_bganygrp{position:absolute;top:0px;right:10px;transition:all 200ms;font-size:30px;font-weight:700;text-decoration:none;color:#333;cursor:pointer}
+.opencarttools_bganygrp .closeopencarttools_bganygrp:hover{color:#06D85F}
+.opencarttools_bganygrp .contentopenweb{max-height:400px;overflow:auto;font-family:Verdana,Arial,Helvetica,sans-serif}
+@media screen and (max-width: 700px) {
+.opencarttools_bganygrp{width:70%}
+}
+</style>
+<script language="javascript">
+function opencarttools_bganygrp() {
+	document.getElementById("opencarttools_bganygrp").style.display = 'block';
+	document.getElementById("opencarttools_bganygrp").style.opacity = '1';
+	document.body.className = document.body.className + ' opencarttools_bganygrpbody';
+}
+function closeopencarttools_bganygrp() {
+	document.getElementById("opencarttools_bganygrp").style.display = 'none';
+	document.getElementById("opencarttools_bganygrp").style.opacity = '0';
+	document.body.className = document.body.className.replace(" opencarttools_bganygrpbody","");
+} 
+</script>
+<div id="opencarttools_bganygrp" class="overlayopencarttools_bganygrp">
+	<div class="opencarttools_bganygrp">
+ 		<a class="closeopencarttools_bganygrp" onclick="closeopencarttools_bganygrp();">&times;</a>
+		<div class="contentopenweb">{{ offer_content }}</div>
+	</div>
+</div>
+{% endif %}
