@@ -1,0 +1,311 @@
+{{ header }}{{ column_left }}
+
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-bganygrp" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb['href'] }}">{{ breadcrumb['text'] }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if(error_warning) %}
+    <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_form }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-bganygrp" class="form-horizontal">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab-general" data-toggle="tab">{{ tab_general }}</a></li>
+            <li><a href="#tab-tabgrouping" data-toggle="tab">{{ tab_group }}</a></li>
+            <li><a href="#tab-displayoffer" data-toggle="tab">{{ tab_displayoffer }}</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-general">
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="name" value="{{ name }}" placeholder="{{ entry_name }}" id="input-name" class="form-control" />
+                  {% if(error_name) %}
+                  <div class="text-danger">{{ error_name }}</div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-discount_type">{{ entry_discount_type }}</label>
+                <div class="col-sm-10">
+                  <select name="discount_type" id="input-discount_type" class="form-control" onchange="showdiscount_value(this.value);">
+                    <option value="1" {% if(discount_type == 1) %} selected="selected" {% endif %} >{{ text_free }}</option>
+                    <option value="2" {% if(discount_type == 2) %} selected="selected" {% endif %} >{{ text_fixed_amount }}</option>
+                    <option value="3" {% if(discount_type == 3) %} selected="selected" {% endif %} >{{ text_percentage }}</option>
+                  </select>
+                </div>
+              </div>
+			  <div class="form-group" id="discount_value" style="display:none">
+				<label class="col-sm-2 control-label">{{ entry_discount_value }}</label>
+				<div class="col-sm-10">
+				  <input type="text" name="discount_value" value="{{ discount_value }}" class="form-control" /> 
+				</div>
+			  </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-buyqty">{{ entry_buyqty }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="buyqty" value="{{ buyqty }}" placeholder="{{ entry_buyqty }}" id="input-buyqty" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-getqty">{{ entry_getqty }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="getqty" value="{{ getqty }}" placeholder="{{ entry_getqty }}" id="input-getqty" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-ribbontext">{{ entry_ribbontext }}</label>
+                <div class="col-sm-10">
+                  {% for language in languages %}
+                  <div class="input-group pull-left"><span class="input-group-addon"><img src="{{ language['imgsrc'] }}" /> </span>
+                    <input type="text" name="ribbontext[{{ language['language_id'] }}]" value="{% if(ribbontext[language['language_id']]) %}{{ ribbontext[language['language_id']] }}{% endif %}" placeholder="{{ entry_ribbontext }}" id="input-ribbontext{{ language['language_id'] }}" class="form-control" />
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-ordertotaltext">{{ entry_ordertotaltext }}</label>
+                <div class="col-sm-10">
+                  {% for language in languages %}
+                  <div class="input-group pull-left"><span class="input-group-addon"><img src="{{ language['imgsrc'] }}" /> </span>
+                    <input type="text" name="ordertotaltext[{{ language['language_id'] }}]" value="{% if(ordertotaltext[language['language_id']]) %}{{ ordertotaltext[language['language_id']] }}{% endif %}" placeholder="{{ entry_ordertotaltext }}" id="input-ordertotaltext{{ language['language_id'] }}" class="form-control" />
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">{{ entry_customer_group }}</label>
+                <div class="col-sm-10">
+                  <div class="well well-sm" style="height: 150px; overflow: auto;">
+                    {% for cgrp in customer_groups %}
+                    <div class="checkbox">
+                      <label>
+                      {% if(customer_group and cgrp['customer_group_id'] in customer_group) %}
+                      <input type="checkbox" name="customer_group[]" value="{{ cgrp['customer_group_id'] }}" checked="checked" />
+                      {{ cgrp['name'] }}
+                      {% else %}
+                      <input type="checkbox" name="customer_group[]" value="{{ cgrp['customer_group_id'] }}" />
+                      {{ cgrp['name'] }}
+                      {% endif %}
+                      </label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">{{ entry_store }}</label>
+                <div class="col-sm-10">
+                  <div class="well well-sm" style="height: 150px; overflow: auto;">
+                    <div class="checkbox">
+                      <label>
+ 					  {% if(store and 0 in store) %}
+                      <input type="checkbox" name="store[]" value="0" checked="checked" />
+                      {{ text_default }}
+                      {% else %}
+                      <input type="checkbox" name="store[]" value="0" />
+                      {{ text_default }}
+                      {% endif %}
+                      </label>
+                    </div>
+                    {% for store_data in stores %}
+                    <div class="checkbox">
+                      <label>
+					  {% if(store_data['store_id'] in store) %}
+                      <input type="checkbox" name="store[]" value="{{ store_data['store_id'] }}" checked="checked" />
+                      {{ store_data['name'] }}
+                      {% else %}
+                      <input type="checkbox" name="store[]" value="{{ store_data['store_id'] }}" />
+                      {{ store_data['name'] }}
+                      {% endif %}
+                      </label>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                  <select name="status" id="input-status" class="form-control">
+                    {% if(status) %}
+                    <option value="1" selected="selected">{{ text_enabled }}</option>
+                    <option value="0">{{ text_disabled }}</option>
+                    {% else %}
+                    <option value="1">{{ text_enabled }}</option>
+                    <option value="0" selected="selected">{{ text_disabled }}</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-tabgrouping">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-grpproduct">{{ entry_grpproduct }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="grpproduct" value=""  id="input-grpproduct" class="form-control" />
+                  <div id="grpproduct" class="well well-sm" style="height: 150px; overflow: auto;">
+                    {% if(grpproduct_data) %}
+                    {% for product in grpproduct_data %}
+                    <div id="grpproduct-{{ product['product_id'] }}"><i class="fa fa-minus-circle"></i> {{ product['name'] }}
+                      <input type="hidden" name="grpproduct[]" value="{{ product['product_id'] }}" />
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-grpcategory">{{ entry_grpcategory }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="grpcategory" value=""  id="input-grpcategory" class="form-control" />
+                  <div id="grpcategory" class="well well-sm" style="height: 150px; overflow: auto;">
+ 					{% if(grpcategory_data) %}
+                    {% for category in grpcategory_data %}
+                    <div id="grpcategory-{{ category['category_id'] }}"><i class="fa fa-minus-circle"></i> {{ category['name'] }}
+                      <input type="hidden" name="grpcategory[]" value="{{ category['category_id'] }}" />
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-grpmanufacturer">{{ entry_grpmanufacturer }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="grpmanufacturer" value=""  id="input-grpmanufacturer" class="form-control" />
+                  <div id="grpmanufacturer" class="well well-sm" style="height: 150px; overflow: auto;">
+ 					{% if(grpmanufacturer_data) %}
+                    {% for manufacturer in grpmanufacturer_data %}
+                    <div id="grpmanufacturer-{{ manufacturer['manufacturer_id'] }}"><i class="fa fa-minus-circle"></i> {{ manufacturer['name'] }}
+                      <input type="hidden" name="grpmanufacturer[]" value="{{ manufacturer['manufacturer_id'] }}" />
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-pane" id="tab-displayoffer">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-display_offer_at">{{ entry_display_offer_at }}</label>
+                <div class="col-sm-10">
+                  <select name="display_offer_at" id="input-display_offer_at" class="form-control">
+                    <option value="1" {% if(display_offer_at == 1) %} selected="selected" {% endif %} >{{ text_above_desc_tab }}</option>
+                    <option value="2" {% if(display_offer_at == 2) %} selected="selected" {% endif %} >{{ text_at_popup }}</option>
+                    <option value="3" {% if(display_offer_at == 3) %} selected="selected" {% endif %} >{{ text_at_desc_tab }}</option>
+                  </select>
+                </div>
+              </div>
+              <ul class="nav nav-tabs" id="language">
+                {% for language in languages %}
+                <li><a href="#language{{ language['language_id'] }}" data-toggle="tab"><img src="{{ language['imgsrc'] }}" /> {{ language['name'] }}</a></li>
+                {% endfor %}
+              </ul>
+              <div class="tab-content">
+                {% for language in languages %}
+                <div class="tab-pane" id="language{{ language['language_id'] }}">
+                  <div class="form-group required">
+                    <label class="col-sm-2 control-label" for="input-offer_heading_text{{ language['language_id'] }}">{{ entry_offer_heading_text }}</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="offer_heading_text[{{ language['language_id'] }}]" value="{% if(offer_heading_text[language['language_id']]) %}{{ offer_heading_text[language['language_id']] }}{% endif %}" placeholder="{{ entry_offer_heading_text }}" id="input-offer_heading_text{{ language['language_id'] }}" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-offer_content{{ language['language_id'] }}">{{ entry_offer_content }}</label>
+                    <div class="col-sm-10">
+                      <textarea name="offer_content[{{ language['language_id'] }}]" placeholder="{{ entry_offer_content }}" data-toggle="summernote" data-lang="{{ summernote }}" id="input-offer_content{{ language['language_id'] }}"" class="form-control summernote">{% if(offer_content[language['language_id']]) %}{{ offer_content[language['language_id']] }}{% endif %}</textarea>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
+<link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
+<script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script> 
+<script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script> 
+<script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script> 
+<script type="text/javascript" src="view/javascript/summernote/summernote.js"></script>
+<link href="view/javascript/summernote/summernote.css" rel="stylesheet" />
+<script type="text/javascript" src="view/javascript/summernote/summernote-image-attributes.js"></script> 
+<script type="text/javascript" src="view/javascript/summernote/opencart.js"></script> 
+
+<script type="text/javascript"> 
+function loadajaxprocatmanu(typeset, inptname) { 
+$('input[name=\''+inptname+'\']').autocomplete({
+	source: function(request, response) {
+		$.ajax({
+			url: 'index.php?route=catalog/'+typeset+'/autocomplete&user_token={{ user_token }}&filter_name=' +  encodeURIComponent(request),
+			dataType: 'json',
+			success: function(json) {
+				response($.map(json, function(item) {
+					return {
+						label: item['name'],
+						value: item[''+typeset+'_id']
+					}
+				}));
+			}
+		});
+	},
+	select: function(item) {
+		$('input[name=\''+inptname+'\']').val('');
+		
+		$('#'+inptname+ item['value']).remove();
+		
+		$('#'+inptname).append('<div id="'+inptname+'-' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="'+inptname+'[]" value="' + item['value'] + '" /></div>');	
+	}
+});
+	
+$('#'+inptname).delegate('.fa-minus-circle', 'click', function() {
+	$(this).parent().remove();
+}); 
+}
+</script>
+  <script language="javascript"> 
+loadajaxprocatmanu('product', 'grpproduct') ; 
+loadajaxprocatmanu('category', 'grpcategory') ; 
+loadajaxprocatmanu('manufacturer', 'grpmanufacturer') ; 
+
+$('#language a:first').tab('show');
+
+$( document ).ready(function() {
+	$('#discount_value').hide();
+    if($('#input-discount_type').val() == 2 || $('#input-discount_type').val() == 3) { 
+		$('#discount_value').show();
+	}
+});
+function showdiscount_value(selectval) {
+	if(selectval == 2 || selectval == 3) {
+		$('#discount_value').show();
+	} else {
+		$('#discount_value').hide();
+	}
+}
+</script>
+</div>
+{{ footer }}
