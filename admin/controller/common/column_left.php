@@ -667,6 +667,13 @@ class ControllerCommonColumnLeft extends Controller {
 				'name'	   => $this->language->get('text_reports'),
 				'href'     => '',
 				'children' => $report
+			);
+
+			$data['menus'][] = array(
+				'id'       => 'kampanya_module',
+				'icon'	   => 'fa-arrow-right', 
+				'name'	   => $this->language->get('kampanya_module'),
+				'href'     => $this->url->link('extension/bganygrp', 'user_token=' . $this->session->data['user_token'], true)
 			);	
 			
 			// Stats

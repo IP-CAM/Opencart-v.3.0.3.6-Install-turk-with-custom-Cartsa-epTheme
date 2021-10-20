@@ -90,3 +90,4 @@ $_['text_paypal_search']        = 'Arama';
 $_['text_complete_status']      = 'Tamamlanan Siparişler';
 $_['text_processing_status']    = 'Hazırlanan Siparişler';
 $_['text_other_status']         = 'Diğer Durumlar';
+$_['kampanya_module']           = 'Gelişmiş kampanya';
