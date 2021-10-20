@@ -1,0 +1,4 @@
+.bganygrp_ribbontext{position:absolute;left:15px;top:0;z-index:1;overflow:hidden;width:150px;height:150px;text-align:right}
+.bganygrp_ribbontext span{font-size:12px;font-weight:700;color:#FFF;text-transform:uppercase;text-align:center;line-height:25px;transform:rotate(-45deg);-webkit-transform:rotate(-45deg);width:200px;display:block;background:#79A70A;background:linear-gradient(#F70505 0%,#8F0808 100%);box-shadow:0 3px 10px -5px rgba(0,0,0,1);position:absolute;top:40px;left:-40px}
+.bganygrp_ribbontext span::before{content:"";position:absolute;left:0;top:100%;z-index:-1;border-left:3px solid #8F0808;border-right:3px solid transparent;border-bottom:3px solid transparent;border-top:3px solid #8F0808}
+.bganygrp_ribbontext span::after{content:"";position:absolute;right:0;top:100%;z-index:-1;border-left:3px solid transparent;border-right:3px solid #8F0808;border-bottom:3px solid transparent;border-top:3px solid #8F0808}
