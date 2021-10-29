@@ -1566,6 +1566,11 @@ body.active-search .wbSearch {
 	background-color: #333;
 	color: #fff;
 }
+
+.bann {
+	margin-bottom: 15px !important;
+}
+
 /* banner text */
 .beffect{
 	position: relative
