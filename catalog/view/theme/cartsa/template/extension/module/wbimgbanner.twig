@@ -1,17 +1,22 @@
+<style>
+	.bann {
+		margin-bottom: 15px !important;
+	}
+</style>
 <div class="container">
-<div class="row imgbnr">
-    {% for banner in banners %}
-    <div class="col-sm-6 col-xs-12 bann">
-    	<div class="beffect">
-	        {% if banner.link %}
-			    <a href="{{ banner.link }}">
-			    <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />
-			    </a>
-			    {% else %}
-			    <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />
-		    {% endif %}
-		</div>
+	<div class="row imgbnr">
+		{% for banner in banners %}
+			<div class="col-sm-6 col-xs-12 bann">
+				<div class="beffect">
+					{% if banner.link %}
+						<a href="{{ banner.link }}">
+							<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block"/>
+						</a>
+					{% else %}
+						<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block"/>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
 	</div>
-    {% endfor %}
-</div>
 </div>
