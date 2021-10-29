@@ -3,13 +3,15 @@
 <div id="slideshow{{ module }}" class="slideshow">
     {% for banner in banners %}
       <div>
-        {% if banner.link %}
+        {% if banner.link and banner.link != '' %}
           <a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive center-block" />
         {% endif %}
       <div class="slidertext">
       <div class="slideff">
         {{ banner.description }}
+        {% if banner.link and banner.link != '' %}
         <a href="{{ banner.link }}" class="btn btn-primary">{{ shop_now }}</a>
+        {% endif %}
       </div>
       </div>
     </div>
